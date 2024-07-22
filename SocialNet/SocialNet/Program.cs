@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SocialNet.Models;
@@ -24,6 +25,13 @@ namespace SocialNet
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            var mapperConfig = new MapperConfiguration((v) =>
+            {
+                v.AddProfile(new Mapper());
+            });
+
+            var mapper = mapperConfig.CreateMapper();
+            builder.Services.AddSingleton(mapper);
 
             var app = builder.Build();
 

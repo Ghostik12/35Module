@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using SocialNet.Models;
-using System.Runtime.CompilerServices;
 
 namespace SocialNet.Controllers
 {
@@ -20,7 +19,7 @@ namespace SocialNet.Controllers
         }
 
         [Route("Register")]
-        [HttpGet]
+        [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (ModelState.IsValid)
@@ -42,6 +41,13 @@ namespace SocialNet.Controllers
                 }
             }
             return View("RegisterPt2", model);
+        }
+
+        [Route("Register")]
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View("Home/Register");
         }
 
         [Route("RegisterPt2")]

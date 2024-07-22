@@ -1,0 +1,13 @@
+﻿@using Microsoft.AspNetCore.Identity;
+@using SocialNet.Models;
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+<div class="righ">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <form method="post" class="exit" asp-controller="AccountManager" asp-action="Logout">
+            <input class="enter_submit" type="submit" value="Выход" />
+        </form>
+    }
+</div>

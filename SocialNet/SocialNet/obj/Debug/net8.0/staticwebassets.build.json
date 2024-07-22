@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "fCsw9rs+NHHYJOv4YxltMCcGxD81QMwgmeFYnwWtX0g=",
+  "Hash": "Q2wBpER4V0lo+34bwvu8M/shreL3r32YdoBesim82N4=",
   "Source": "SocialNet",
   "BasePath": "_content/SocialNet",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Проекты\\Module3\\Module35\\SocialNet\\SocialNet\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\SocialNet.bundle.scp.css"
+    },
+    {
+      "Identity": "D:\\Проекты\\Module3\\Module35\\SocialNet\\SocialNet\\wwwroot\\css\\base-styles.css",
+      "SourceId": "SocialNet",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Проекты\\Module3\\Module35\\SocialNet\\SocialNet\\wwwroot\\",
+      "BasePath": "_content/SocialNet",
+      "RelativePath": "css/base-styles.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\base-styles.css"
     },
     {
       "Identity": "D:\\Проекты\\Module3\\Module35\\SocialNet\\SocialNet\\wwwroot\\css\\main-page.css",

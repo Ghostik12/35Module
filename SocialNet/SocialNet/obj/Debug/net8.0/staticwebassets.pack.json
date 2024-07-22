@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\SocialNet.bundle.scp.css"
     },
     {
+      "Id": "D:\\Проекты\\Module3\\Module35\\SocialNet\\SocialNet\\wwwroot\\css\\base-styles.css",
+      "PackagePath": "staticwebassets\\css\\base-styles.css"
+    },
+    {
       "Id": "D:\\Проекты\\Module3\\Module35\\SocialNet\\SocialNet\\wwwroot\\css\\main-page.css",
       "PackagePath": "staticwebassets\\css\\main-page.css"
     },
