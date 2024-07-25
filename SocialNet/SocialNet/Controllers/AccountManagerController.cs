@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using SocialNet.Extentions;
 using SocialNet.Models;
 
 namespace SocialNet.Controllers
@@ -39,7 +40,7 @@ namespace SocialNet.Controllers
                 if (result.Succeeded)
                 {
 
-                    return RedirectToAction("MyPage", "AccountManager");
+                    return RedirectToAction("Index", "User");
                 }
                 else
                 {
@@ -70,6 +71,47 @@ namespace SocialNet.Controllers
             var model = new UserViewModel(result);
 
             return View("User", model);
+        }
+
+        [Route("Edit")]
+        [HttpGet]
+        public IActionResult Edit()
+        {
+            var user = User;
+
+            var result = _userManager.GetUserAsync(user);
+
+            var editmodel = _mapper.Map<EditViewModel>(result.Result);
+
+            return View("Edit", editmodel);
+        }
+
+        [Authorize]
+        [Route("Update")]
+        [HttpPost]
+        public async Task<IActionResult> Update(EditViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByIdAsync(model.UserId);
+
+                user.Convert(model);
+
+                var result = await _userManager.UpdateAsync(user);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "User");
+                }
+                else
+                {
+                    return RedirectToAction("Edit", "AccountManager");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Некорректные данные");
+                return View("Edit", model);
+            }
         }
     }
 }
