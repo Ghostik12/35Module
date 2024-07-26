@@ -40,7 +40,7 @@ namespace SocialNet.Controllers
                 if (result.Succeeded)
                 {
 
-                    return RedirectToAction("Index", "User");
+                    return RedirectToAction("MyPage", "User");
                 }
                 else
                 {
@@ -57,61 +57,6 @@ namespace SocialNet.Controllers
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
-        }
-
-        [Authorize]
-        [Route("MyPage")]
-        [HttpGet]
-        public async Task<IActionResult> MyPage()
-        {
-            var user = User;
-
-            var result = await _userManager.GetUserAsync(user);
-
-            var model = new UserViewModel(result);
-
-            return View("User", model);
-        }
-
-        [Route("Edit")]
-        [HttpGet]
-        public IActionResult Edit()
-        {
-            var user = User;
-
-            var result = _userManager.GetUserAsync(user);
-
-            var editmodel = _mapper.Map<EditViewModel>(result.Result);
-
-            return View("Edit", editmodel);
-        }
-
-        [Authorize]
-        [Route("Update")]
-        [HttpPost]
-        public async Task<IActionResult> Update(EditViewModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = await _userManager.FindByIdAsync(model.UserId);
-
-                user.Convert(model);
-
-                var result = await _userManager.UpdateAsync(user);
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("Index", "User");
-                }
-                else
-                {
-                    return RedirectToAction("Edit", "AccountManager");
-                }
-            }
-            else
-            {
-                ModelState.AddModelError("", "Некорректные данные");
-                return View("Edit", model);
-            }
         }
     }
 }
