@@ -44,7 +44,7 @@
                 <label class="gray-text">Список друзей</label>
 
                 <div class="friendbox"> Список друзей!
-                    @* @if (Model.Friends.Count != 0)
+                    @if (Model.Friends.Count != 0)
                     {
 
                         @foreach (var user in @Model.Friends)
@@ -56,15 +56,15 @@
                                 <div class="mrgn center-align">
                                     @user.GetFullName()
                                 </div>
-                                <div class="mrgn center-align">
-                                    <form asp-controller="AccountManager" asp-action="Chat" asp-route-id="@user.Id" method="post">
+                                @* <div class="mrgn center-align">
+                                    <form asp-controller="User" asp-action="Chat" asp-route-id="@user.Id" method="post">
                                         <button type="submit" class="btn btn-sm btn-primary min-width-but">
                                             Чат
                                         </button>
                                     </form>
-                                </div>
+                                </div> *@
                                 <div class="mrgn center-align">
-                                    <form asp-controller="AccountManager" asp-action="DeleteFriend" asp-route-id="@user.Id" method="post">
+                                    <form asp-controller="User" asp-action="DeleteFriend" asp-route-id="@user.Id" method="post">
                                         <button type="submit" class="btn btn-sm btn-primary min-width-but">
                                             Удалить из друзей
                                         </button>
@@ -79,7 +79,7 @@
                         <div>
                             <label> У вас пока нет друзей.</label>
                         </div>
-                    } *@
+                    }
                 </div>
 
             </div>

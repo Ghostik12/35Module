@@ -28,8 +28,10 @@ namespace SocialNet.Controllers
             var user = User;
             var result = await _userManager.GetUserAsync(user);
             var model = new UserViewModel(result);
+            model.Friends = await GetAllFriend(model.User);
             return View("User", model);
         }
+
 
         [Route("Edit")]
         [HttpGet]
@@ -103,6 +105,13 @@ namespace SocialNet.Controllers
             };
 
             return model;
+        }
+
+        private async Task<List<User>> GetAllFriend(User user)
+        {
+            var repository = _unitOfWork.GetRepository<Friend>() as FriendsRepository;
+
+            return repository.GetFriendsByUser(user);
         }
 
         private async Task<List<User>> GetAllFriend()
