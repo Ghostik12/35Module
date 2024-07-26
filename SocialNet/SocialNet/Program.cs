@@ -2,6 +2,8 @@ using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SocialNet.Models;
+using SocialNet.Repository;
+using SocialNet.Extentions;
 
 namespace SocialNet
 {
@@ -13,6 +15,8 @@ namespace SocialNet
             string connection = builder.Configuration.GetConnectionString("DefaultConnection");
 
             builder.Services.AddDbContext <ApplicationDbContext>(options => options.UseSqlServer(connection))
+                .AddUnitOfWork()
+                .AddCustomRepository<Friend, FriendsRepository>()
                 .AddIdentity<User, IdentityRole>(opts =>
                 {
                     opts.Password.RequiredLength = 5;
@@ -22,6 +26,7 @@ namespace SocialNet
                     opts.Password.RequireUppercase = false;
                 })
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+                
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
@@ -48,8 +53,8 @@ namespace SocialNet
 
             app.UseRouting();
 
-            app.UseAuthorization();
             app.UseAuthentication();
+            app.UseAuthorization();
 
             app.MapControllerRoute(
                 name: "default",
