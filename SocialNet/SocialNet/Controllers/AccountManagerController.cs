@@ -47,7 +47,7 @@ namespace SocialNet.Controllers
                     ModelState.AddModelError("", "Неверный логин и (или) пароль");
                 }
             }
-            return View("Vïews/Home/Index.cshtml");
+            return View("Views/Home/Index.cshtml");
         }
 
         [Route("Logout")]

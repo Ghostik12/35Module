@@ -5,18 +5,18 @@ using SocialNet.Models;
 
 namespace SocialNet
 {
-    public class ApplicationDbContext : IdentityDbContext <User>
+    public class ApplicationDbContext : IdentityDbContext<User>
     {
         public ApplicationDbContext(DbContextOptions <ApplicationDbContext> options) : base (options) 
         {
-            Database.EnsureCreated();
+            Database.Migrate();
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
 
-            builder.ApplyConfiguration<Friend>(new FriendConfiguration());
+            builder.ApplyConfiguration(new FriendConfiguration());
         }
     }
 }
