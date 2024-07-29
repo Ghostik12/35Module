@@ -10,6 +10,16 @@ namespace SocialNet.Config
         {
             builder.ToTable("UserFriends").HasKey(p => p.Id);
             builder.Property(x => x.Id).UseIdentityColumn();
+
+            builder.HasOne(f => f.User)
+            .WithMany()
+            .HasForeignKey(f => f.UserId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(f => f.CurrentFriend)
+                .WithMany()
+                .HasForeignKey(f => f.CurrentFriendId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
