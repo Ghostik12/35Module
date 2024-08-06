@@ -78,8 +78,8 @@
 }
 
 .ava {
-    width: 100%;
-    max-width: 150px;
+    width: 20%;
+    max-width: max-content;
 }
 
 .min-width-but {

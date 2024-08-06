@@ -58,5 +58,19 @@ namespace SocialNet.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
+
+        [Route("")]
+        [Route("[controller]/[action]")]
+        public IActionResult Index()
+        {
+            if (_signInManager.IsSignedIn(User))
+            {
+                return RedirectToAction("MyPage", "User");
+            }
+            else
+            {
+                return View(new MainViewModel());
+            }
+        }
     }
 }

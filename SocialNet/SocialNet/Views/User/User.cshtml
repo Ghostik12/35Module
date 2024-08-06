@@ -43,7 +43,7 @@
             <div class="lined-block friendcontainer">
                 <label class="gray-text">Список друзей</label>
 
-                <div class="friendbox"> Список друзей!
+                <div class="friendbox">
                     @if (Model.Friends.Count != 0)
                     {
 
@@ -56,13 +56,13 @@
                                 <div class="mrgn center-align">
                                     @user.GetFullName()
                                 </div>
-                                @* <div class="mrgn center-align">
+                                <div class="mrgn center-align">
                                     <form asp-controller="User" asp-action="Chat" asp-route-id="@user.Id" method="post">
                                         <button type="submit" class="btn btn-sm btn-primary min-width-but">
                                             Чат
                                         </button>
                                     </form>
-                                </div> *@
+                                </div> 
                                 <div class="mrgn center-align">
                                     <form asp-controller="User" asp-action="DeleteFriend" asp-route-id="@user.Id" method="post">
                                         <button type="submit" class="btn btn-sm btn-primary min-width-but">
