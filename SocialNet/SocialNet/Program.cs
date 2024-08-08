@@ -17,6 +17,7 @@ namespace SocialNet
 
             builder.Services.AddDbContext <ApplicationDbContext>(options => options.UseSqlServer(connection))
                 .AddUnitOfWork()
+                .AddCustomRepository<Message, MessageRepository>()
                 .AddCustomRepository<Friend, FriendsRepository>()
                 .AddIdentity<User, IdentityRole>(opts =>
                 {

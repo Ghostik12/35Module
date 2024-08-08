@@ -78,7 +78,7 @@ namespace SocialNet.Controllers
         [HttpGet]
         public async Task<IActionResult> UserList(string search)
         {
-            var model = CreateSearch(search);
+            var model = await CreateSearch(search);
             return View("UserList", model);
         }
 
