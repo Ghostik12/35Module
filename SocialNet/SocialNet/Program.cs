@@ -12,7 +12,8 @@ namespace SocialNet
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            string connection = builder.Configuration.GetConnectionString("DefaultConnection");
+            string connection = builder.Configuration.GetConnectionString("DefaultConnection")
+                ?? throw new ArgumentException("Bd connection");
 
             builder.Services.AddDbContext <ApplicationDbContext>(options => options.UseSqlServer(connection))
                 .AddUnitOfWork()
