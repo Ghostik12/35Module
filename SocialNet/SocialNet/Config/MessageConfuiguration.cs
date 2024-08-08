@@ -10,6 +10,16 @@ namespace SocialNet.Config
         {
             builder.ToTable("Messages").HasKey(p => p.Id);
             builder.Property(x => x.Id).UseIdentityColumn();
+
+            builder.HasOne(m => m.Sender)
+           .WithMany()
+           .HasForeignKey(m => m.SenderId)
+           .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(m => m.Recipient)
+                   .WithMany()
+                   .HasForeignKey(m => m.RecipientId)
+                   .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
